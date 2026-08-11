@@ -40,14 +40,11 @@
     });
   }
 
-  /* ---------------- scroll progress + header state ---------------- */
-  const progressEl = document.querySelector('.scroll-progress span');
+  /* ---------------- header state on scroll ---------------- */
   const header = document.getElementById('site-header');
   const onScroll = () => {
     const h = document.documentElement;
     const scrolled = h.scrollTop;
-    const max = h.scrollHeight - h.clientHeight;
-    progressEl.style.width = `${max > 0 ? (scrolled / max) * 100 : 0}%`;
     header.classList.toggle('is-scrolled', scrolled > 10);
   };
   document.addEventListener('scroll', onScroll, { passive: true });
