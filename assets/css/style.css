@@ -733,7 +733,7 @@ form.lead-form{
   background:var(--paper); color:var(--ink);
   padding:34px; border-radius:20px; box-shadow:var(--shadow-lg);
 }
-form.lead-form .eyebrow{margin-bottom:20px;}
+form.lead-form .eyebrow{margin-bottom:20px; color:var(--teal-deep);}
 .field{position:relative; margin-bottom:20px;}
 .field input, .field select{
   width:100%; padding:16px 14px 8px; border-radius:10px;
