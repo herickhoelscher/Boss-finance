@@ -321,11 +321,11 @@ body.is-loading{overflow:hidden; height:100vh;}
 .hero-stats{
   position:relative; z-index:2;
   display:grid; grid-template-columns:repeat(4,1fr);
-  gap:1px; background:var(--line-navy);
-  border:1px solid var(--line-navy); border-radius:14px; overflow:hidden;
+  background:rgba(8,21,42,0.6);
+  border-radius:14px; overflow:hidden;
 }
 .stat{
-  background:rgba(8,21,42,0.6); padding:26px 20px;
+  padding:26px 20px;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   text-align:center; gap:8px;
 }
