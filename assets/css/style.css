@@ -173,14 +173,6 @@ section{padding:110px 0; position:relative; scroll-margin-top:84px;}
 .btn-ghost-dark:hover{border-color:var(--teal-deep); background:rgba(15,107,125,0.06);}
 .btn-small{padding:13px 24px; font-size:13.5px;}
 .btn-block{width:100%; justify-content:center;}
-.ripple{
-  position:absolute; border-radius:50%;
-  background:rgba(255,255,255,0.5);
-  transform:scale(0);
-  animation:ripple .6s ease-out forwards;
-  pointer-events:none; z-index:1;
-}
-@keyframes ripple{ to{transform:scale(1); opacity:0;} }
 .btn::after{
   content:"\2192";
   position:relative; z-index:2;

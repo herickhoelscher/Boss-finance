@@ -209,21 +209,6 @@
     gradEls.forEach((el) => setTimeout(() => scrambleText(el), 1300));
   }
 
-  /* ---------------- button ripple ---------------- */
-  document.querySelectorAll('.btn').forEach((btn) => {
-    btn.addEventListener('click', function (e) {
-      const r = this.getBoundingClientRect();
-      const ripple = document.createElement('span');
-      const size = Math.max(r.width, r.height) * 1.4;
-      ripple.className = 'ripple';
-      ripple.style.width = ripple.style.height = `${size}px`;
-      ripple.style.left = `${e.clientX - r.left - size / 2}px`;
-      ripple.style.top = `${e.clientY - r.top - size / 2}px`;
-      this.appendChild(ripple);
-      ripple.addEventListener('animationend', () => ripple.remove());
-    });
-  });
-
   /* ---------------- tabs (serviços) ---------------- */
   const tabBtns = document.querySelectorAll('.tab-btn');
   const tabIndicator = document.querySelector('.tab-indicator');
