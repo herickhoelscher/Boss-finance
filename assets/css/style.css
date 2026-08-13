@@ -578,7 +578,7 @@ body.is-loading{overflow:hidden; height:100vh;}
 .chart-title{font-size:20px; color:var(--on-navy); margin-top:6px;}
 
 .bars-card{
-  margin-top:26px; background:#0d0f14;
+  margin-top:26px; background:rgba(234,242,250,0.045); border:1px solid var(--line-navy);
   border-radius:22px; padding:38px 34px 30px;
 }
 .bars-badge{
