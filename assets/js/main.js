@@ -161,8 +161,8 @@
     });
   }
 
-  /* ---------------- cost bars fill ---------------- */
-  const bars = document.querySelectorAll('.cost-bar');
+  /* ---------------- cost bars + chart bars fill ---------------- */
+  const bars = document.querySelectorAll('.cost-bar, .bars-chart');
   const barObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
