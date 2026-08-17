@@ -219,6 +219,12 @@ footer .brand{color:var(--on-navy);}
 
 body.is-loading{overflow:hidden; height:100vh;}
 
+.nav-overlay{
+  position:fixed; inset:0; z-index:499;
+  background:rgba(2,6,13,0.8);
+  opacity:0; pointer-events:none;
+  transition:opacity .35s ease;
+}
 @media(max-width:900px){
   .navlinks{
     position:fixed; top:0; right:0; height:100vh; width:min(78vw,320px);
@@ -226,8 +232,10 @@ body.is-loading{overflow:hidden; height:100vh;}
     padding:40px; gap:26px;
     transform:translateX(100%); transition:transform .4s var(--ease);
     box-shadow:-20px 0 60px rgba(0,0,0,0.4);
+    z-index:500;
   }
   .navlinks.is-open{transform:translateX(0);}
+  .nav-overlay.is-open{opacity:1; pointer-events:auto;}
   .burger{display:flex;}
   .nav .btn-small{display:none;}
 }
@@ -517,6 +525,13 @@ body.is-loading{overflow:hidden; height:100vh;}
 .cost-total-divider{height:1px; background:var(--line-navy); margin:8px 0 16px;}
 .cost-total p{font-size:14.5px; color:var(--on-navy-dim); margin-bottom:22px; line-height:1.7;}
 @media(max-width:880px){ .cost-grid{grid-template-columns:1fr;} .cost-row{grid-template-columns:1fr 1fr auto; font-size:13px;} }
+@media(max-width:560px){
+  .cost-list{padding:24px 20px;}
+  .cost-row{grid-template-columns:1fr; row-gap:6px;}
+  .cost-name{order:1;}
+  .cost-val{order:2; white-space:normal; font-size:15px;}
+  .cost-bar{order:3;}
+}
 
 /* ---------------- para quem ---------------- */
 .paraquem{background:var(--paper);}
@@ -578,13 +593,13 @@ body.is-loading{overflow:hidden; height:100vh;}
   font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
   margin-bottom:38px;
 }
-.bars-chart{position:relative; display:flex; height:400px; padding-left:124px;}
-.bars-yaxis{position:absolute; left:0; top:0; bottom:0; width:108px;}
+.bars-chart{position:relative; display:flex; height:400px;}
+.bars-yaxis{position:relative; flex:0 0 124px; width:124px;}
 .bars-yaxis span{
   position:absolute; left:0; right:0; transform:translateY(50%);
   font-size:12.5px; color:var(--on-navy-dim); text-align:right; white-space:nowrap;
 }
-.bars-plot{position:relative; flex:1; height:100%;}
+.bars-plot{position:relative; flex:1; min-width:0; height:100%;}
 .bars-grid{position:absolute; inset:0;}
 .bars-grid i{
   position:absolute; left:0; right:0; height:1px;
@@ -600,16 +615,19 @@ body.is-loading{overflow:hidden; height:100vh;}
 .bars-chart.is-in .bar-fill{height:var(--h);}
 .bar-in{background:#1e88ff;}
 .bar-out{background:#00d9a3;}
-.bars-month span{margin-top:14px; font-size:12px; color:var(--on-navy-dim); letter-spacing:.02em;}
+.bars-month span{margin-top:14px; font-size:12px; color:var(--on-navy-dim); letter-spacing:.02em; white-space:nowrap;}
 .bars-legend{display:flex; justify-content:flex-end; gap:22px; margin-top:26px; font-size:14px; color:var(--on-navy-dim);}
 .bars-legend span{display:inline-flex; align-items:center; gap:7px;}
 .bars-dot{width:11px; height:11px; border-radius:3px; display:inline-block;}
 .bars-dot-in{background:#1e88ff;}
 .bars-dot-out{background:#00d9a3;}
 @media(max-width:700px){
-  .bars-chart{height:280px; padding-left:80px;}
-  .bars-yaxis{width:68px;}
+  .bars-card{padding:26px 18px 22px;}
+  .bars-chart{height:260px;}
+  .bars-yaxis{flex-basis:60px; width:60px;}
   .bars-yaxis span{font-size:9px;}
+  .bars-plot{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .bars-months{min-width:520px;}
   .bars-pair{gap:6px;}
   .bar-fill{width:16px;}
   .bars-month span{font-size:9.5px;}

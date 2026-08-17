@@ -53,16 +53,23 @@
   /* ---------------- mobile nav ---------------- */
   const burger = document.getElementById('burger');
   const navlinks = document.getElementById('navlinks');
-  burger.addEventListener('click', () => {
-    const open = navlinks.classList.toggle('is-open');
-    burger.classList.toggle('is-open', open);
-    burger.setAttribute('aria-expanded', String(open));
-  });
-  navlinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+  const navOverlay = document.getElementById('nav-overlay');
+  const closeNav = () => {
     navlinks.classList.remove('is-open');
+    navOverlay.classList.remove('is-open');
     burger.classList.remove('is-open');
     burger.setAttribute('aria-expanded', 'false');
-  }));
+    document.body.style.overflow = '';
+  };
+  burger.addEventListener('click', () => {
+    const open = navlinks.classList.toggle('is-open');
+    navOverlay.classList.toggle('is-open', open);
+    burger.classList.toggle('is-open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+  navOverlay.addEventListener('click', closeNav);
+  navlinks.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeNav));
 
   /* ---------------- active nav link on scroll ---------------- */
   const navA = document.querySelectorAll('[data-nav]');
