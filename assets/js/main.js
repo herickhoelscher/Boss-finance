@@ -269,16 +269,36 @@
     updateFill();
   }
 
-  /* ---------------- lead form ---------------- */
+  /* ---------------- lead form -> whatsapp ---------------- */
   const form = document.getElementById('lead-form');
   if (form) {
+    const WHATS = '5545991537745';
+    const fieldValue = (id) => {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    };
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const btn = form.querySelector('.btn-primary');
       const label = btn.querySelector('.btn-label');
-      label.textContent = 'Recebemos seu contato';
+      const original = label.textContent;
+      const msg = [
+        'Olá! Quero solicitar um diagnóstico financeiro gratuito.',
+        '',
+        `Nome: ${fieldValue('f-nome')}`,
+        `Clínica: ${fieldValue('f-clinica')}`,
+        `WhatsApp: ${fieldValue('f-whats')}`,
+        `Área: ${fieldValue('f-area')}`
+      ].join('\n');
+      window.open(`https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+      label.textContent = 'Abrindo o WhatsApp…';
       btn.style.pointerEvents = 'none';
       btn.style.opacity = '0.75';
+      setTimeout(() => {
+        label.textContent = original;
+        btn.style.pointerEvents = '';
+        btn.style.opacity = '';
+      }, 4000);
     });
   }
 
